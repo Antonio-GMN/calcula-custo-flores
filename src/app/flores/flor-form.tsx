@@ -24,7 +24,7 @@ export function FlorForm({ materiais }: { materiais: Material[] }) {
           id="nome"
           name="nome"
           required
-          className="mt-1 block w-full rounded-full border border-rose-200 bg-white/85 px-4 py-2 text-sm text-black shadow-sm outline-none transition placeholder:text-rose-200 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
+          className="mt-1 block w-full rounded-full border border-rose-200 bg-white/85 px-4 py-2 text-sm text-rose-800 placeholder-shown:text-rose-200 focus:placeholder-shown:text-rose-800 shadow-sm outline-none transition placeholder:text-rose-200 focus:placeholder:text-rose-800 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
           placeholder="ex: Rosa Vermelha"
         />
       </div>
@@ -57,7 +57,7 @@ export function FlorForm({ materiais }: { materiais: Material[] }) {
                     inputMode="decimal"
                     defaultValue="0"
                     onFocus={(e) => e.target.select()}
-                    className="w-20 rounded-full border border-rose-200 bg-white/85 px-3 py-1.5 text-sm text-black shadow-sm outline-none transition placeholder:text-rose-200 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
+                    className="w-20 rounded-full border border-rose-200 bg-white/85 px-3 py-1.5 text-sm text-rose-800 placeholder-shown:text-rose-200 focus:placeholder-shown:text-rose-800 shadow-sm outline-none transition placeholder:text-rose-200 focus:placeholder:text-rose-800 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
                   />
                 </div>
               </div>

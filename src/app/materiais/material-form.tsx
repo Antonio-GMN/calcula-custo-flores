@@ -43,7 +43,7 @@ export function MaterialForm() {
             id="nome"
             name="nome"
             required
-            className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 text-sm text-black shadow-sm outline-none transition placeholder:text-rose-200 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
+            className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 text-sm text-rose-800 placeholder-shown:text-rose-200 focus:placeholder-shown:text-rose-800 shadow-sm outline-none transition placeholder:text-rose-200 focus:placeholder:text-rose-800 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
             placeholder="ex: Fita de cetim"
           />
         </div>
@@ -55,7 +55,8 @@ export function MaterialForm() {
           <CurrencyInput
             key={form.resetKey}
             name="custoPorUnidade"
-            className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 pl-9 text-sm text-black shadow-sm outline-none transition placeholder:text-rose-200 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
+            placeholder="0,00"
+            className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 pl-9 text-sm text-rose-800 placeholder-shown:text-rose-200 focus:placeholder-shown:text-rose-800 shadow-sm outline-none transition placeholder:text-rose-200 focus:placeholder:text-rose-800 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
           />
         </div>
       </div>
@@ -65,19 +66,24 @@ export function MaterialForm() {
           <label htmlFor="unidade" className="mb-2 block text-sm font-medium text-rose-800/80">
             Tipo de unidade
           </label>
-          <select
-            id="unidade"
-            name="unidade"
-            required
-            value={form.unidade}
-            onChange={(e) => dispatch({ type: 'setUnidade', value: e.target.value })}
-            className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 text-sm text-black shadow-sm outline-none transition focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
-          >
-            <option value="">Selecione...</option>
-            <option value="unidade">Unidade</option>
-            <option value="metro">Metro</option>
-            <option value="pacote">Pacote</option>
-          </select>
+          <div className="relative">
+            <select
+              id="unidade"
+              name="unidade"
+              required
+              value={form.unidade}
+              onChange={(e) => dispatch({ type: 'setUnidade', value: e.target.value })}
+              className="block h-12 w-full appearance-none rounded-full border border-rose-200 bg-rose-50/80 px-4 pr-10 text-sm text-rose-800 shadow-sm outline-none transition focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
+            >
+              <option value="">Selecione...</option>
+              <option value="unidade">Unidade</option>
+              <option value="metro">Metro</option>
+              <option value="pacote">Pacote</option>
+            </select>
+            <svg className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </div>
         </div>
 
         {form.unidade === 'pacote' && (
@@ -91,7 +97,7 @@ export function MaterialForm() {
               type="text"
               inputMode="numeric"
               required
-              className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 text-sm text-black shadow-sm outline-none transition placeholder:text-rose-200 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
+              className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 text-sm text-rose-800 placeholder-shown:text-rose-200 focus:placeholder-shown:text-rose-800 shadow-sm outline-none transition placeholder:text-rose-200 focus:placeholder:text-rose-800 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
               placeholder="ex: 10"
             />
           </div>
@@ -108,7 +114,7 @@ export function MaterialForm() {
               type="text"
               inputMode="decimal"
               required
-              className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 text-sm text-black shadow-sm outline-none transition placeholder:text-rose-200 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
+              className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 text-sm text-rose-800 placeholder-shown:text-rose-200 focus:placeholder-shown:text-rose-800 shadow-sm outline-none transition placeholder:text-rose-200 focus:placeholder:text-rose-800 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
               placeholder="ex: 50"
             />
           </div>

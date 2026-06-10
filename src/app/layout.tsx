@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,26 +42,7 @@ export default function RootLayout({
           type="module"
           src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
         ></script>
-        <header className="sticky top-0 z-20 border-b border-rose-200/70 bg-rose-50/85 shadow-sm shadow-rose-200/40 backdrop-blur-xl">
-          <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8">
-            <Link href="/" className="flex items-center gap-3 shrink-0">
-              <span
-                className="grid h-9 w-9 place-items-center rounded-full bg-rose-200 text-rose-500"
-                aria-hidden="true"
-              >
-                <ion-icon
-                  name="flower-outline"
-                  style={{ fontSize: 20 }}
-                  suppressHydrationWarning
-                ></ion-icon>
-              </span>
-              <span className="font-serif text-2xl font-semibold tracking-tight text-rose-800">
-                Custo Material
-              </span>
-            </Link>
-          </nav>
-        </header>
-        <main className="relative z-10 flex-1">{children}</main>
+        <main className="relative z-10 flex-1 flex flex-col justify-center">{children}</main>
         <footer className="relative z-10 border-t border-rose-200/60 bg-rose-50/70 py-4 text-center text-xs font-medium text-rose-700/70 backdrop-blur-xl">
           Feito com amor para minha florista 🌸
         </footer>
