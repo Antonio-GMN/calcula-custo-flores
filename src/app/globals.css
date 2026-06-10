@@ -25,9 +25,47 @@
   --text-6xl--line-height: 56px;
 }
 
+html {
+  background: #fff7fb;
+}
+
 body {
+  position: relative;
+  isolation: isolate;
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   font-size: var(--text-base);
+  background: transparent;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.9) 0 9%, transparent 10%),
+    radial-gradient(circle at 18% 28%, rgba(244, 177, 204, 0.75) 0 8%, transparent 9%),
+    radial-gradient(circle at 8% 38%, rgba(253, 223, 236, 0.8) 0 10%, transparent 11%),
+    radial-gradient(circle at 22% 48%, rgba(251, 207, 223, 0.65) 0 7%, transparent 8%),
+    radial-gradient(circle at 80% 14%, rgba(255, 255, 255, 0.85) 0 11%, transparent 12%),
+    radial-gradient(circle at 90% 26%, rgba(244, 177, 204, 0.7) 0 8%, transparent 9%),
+    radial-gradient(circle at 76% 36%, rgba(253, 223, 236, 0.75) 0 9%, transparent 10%),
+    radial-gradient(circle at 92% 70%, rgba(255, 255, 255, 0.9) 0 13%, transparent 14%),
+    radial-gradient(circle at 72% 78%, rgba(244, 177, 204, 0.62) 0 10%, transparent 11%),
+    radial-gradient(circle at 55% 88%, rgba(253, 223, 236, 0.7) 0 12%, transparent 13%),
+    linear-gradient(135deg, #fff7fb 0%, #fce7f1 38%, #fff7fb 100%);
+  filter: blur(1.5px);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)),
+    radial-gradient(circle at 50% 40%, transparent 0 38%, rgba(255, 255, 255, 0.45) 72%, rgba(255, 245, 249, 0.78) 100%);
 }
 
 input[type="number"]::-webkit-inner-spin-button,

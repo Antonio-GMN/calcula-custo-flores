@@ -4,6 +4,13 @@ import { removeMaterial } from './actions'
 import type { Material } from '@/lib/types'
 import { getCustoUnitario, formatUnidade } from '@/lib/types'
 
+function formatCurrency(value: number) {
+  return value.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
+}
+
 function DeleteButton({ id }: { id: string }) {
   const handleRemove = async (formData: FormData) => {
     await removeMaterial(null, formData)
@@ -14,7 +21,7 @@ function DeleteButton({ id }: { id: string }) {
       <input type="hidden" name="id" value={id} />
       <button
         type="submit"
-        className="text-sm text-red-600 hover:text-red-800"
+        className="rounded-full border border-red-200 bg-white px-3 py-1.5 text-xs font-semibold text-red-600 transition hover:bg-red-50 hover:text-red-700"
       >
         Remover
       </button>
@@ -24,42 +31,42 @@ function DeleteButton({ id }: { id: string }) {
 
 export function MaterialList({ materiais }: { materiais: Material[] }) {
   return (
-    <div className="overflow-hidden rounded-lg border">
-      <table className="min-w-full divide-y">
-        <thead className="bg-gray-50">
-          <tr>
-            <th className="px-4 py-3 text-left text-sm font-semibold">Nome</th>
-            <th className="px-4 py-3 text-left text-sm font-semibold">Unidade</th>
-            <th className="px-4 py-3 text-left text-sm font-semibold">Custo (R$)</th>
-            <th className="px-4 py-3 text-left text-sm font-semibold">Custo Unit&aacute;rio (R$)</th>
-            <th className="px-4 py-3" />
-          </tr>
-        </thead>
-        <tbody className="divide-y">
-          {materiais.map((material) => {
-            const custoUnitario = getCustoUnitario(material)
-            return (
-              <tr key={material.id}>
-                <td className="px-4 py-3 text-sm">{material.nome}</td>
-                <td className="px-4 py-3 text-sm">{formatUnidade(material)}</td>
-                <td className="px-4 py-3 text-sm">
-                  {material.custoPorUnidade.toFixed(2)}
-                </td>
-                <td className="px-4 py-3 text-sm">
-                  {custoUnitario !== material.custoPorUnidade ? (
-                    <span>{custoUnitario.toFixed(2)}</span>
-                  ) : (
-                    <span className="text-gray-400">&mdash;</span>
-                  )}
-                </td>
-                <td className="px-4 py-3 text-right">
-                  <DeleteButton id={material.id} />
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
+    <div className="overflow-hidden rounded-[1.5rem] border border-rose-100 bg-white/70 shadow-sm">
+      <div className="overflow-x-auto">
+        <table className="min-w-full">
+          <thead>
+            <tr className="border-b border-rose-100 bg-rose-50/70 text-left text-xs font-semibold uppercase tracking-[0.18em] text-rose-500">
+              <th className="px-4 py-3">Nome</th>
+              <th className="px-4 py-3">Unidade</th>
+              <th className="px-4 py-3">Custo (R$)</th>
+              <th className="px-4 py-3">Custo Unit&aacute;rio (R$)</th>
+              <th className="px-4 py-3 text-right">A&ccedil;&otilde;es</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-rose-100">
+            {materiais.map((material) => {
+              const custoUnitario = getCustoUnitario(material)
+              return (
+                <tr key={material.id} className="text-sm text-rose-950/80">
+                  <td className="px-4 py-3 font-medium">{material.nome}</td>
+                  <td className="px-4 py-3">{formatUnidade(material)}</td>
+                  <td className="px-4 py-3">{formatCurrency(material.custoPorUnidade)}</td>
+                  <td className="px-4 py-3">
+                    {custoUnitario !== material.custoPorUnidade ? (
+                      <span className="font-semibold text-rose-700">{formatCurrency(custoUnitario)}</span>
+                    ) : (
+                      <span className="text-rose-300">&mdash;</span>
+                    )}
+                  </td>
+                  <td className="px-4 py-3 text-right">
+                    <DeleteButton id={material.id} />
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }

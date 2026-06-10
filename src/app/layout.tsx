@@ -15,7 +15,16 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Custo Material - Flores Artesanais",
-  description: "Sistema para cadastro de materiais e cálculo de custo de buquês artesanais",
+  description:
+    "Sistema para cadastro de materiais e cálculo de custo de buquês artesanais",
+  icons: {
+    icon: [
+      {
+        url: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" stroke="%23e11d48" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"><g fill="none"><circle cx="256" cy="256" r="32"/><path d="M256 128c32 0 64 16 64 48s-32 48-64 48-64-16-64-48 32-48 64-48z"/><path d="M256 384c-32 0-64-16-64-48s32-48 64-48 64 16 64 48-32 48-64 48z"/><path d="M114 240c16-27.7 48-40 72-24s12 48-16 72-48 12-72-16-16-32 16-32z"/><path d="M398 240c16 27.7 0 48-16 72-24 24-56 12-72-16s0-56 16-72 56-24 72 16z"/><path d="M144 352c-24-24-8-56 16-72s56 0 72 16 8 48-16 72-56 24-72-16z"/><path d="M368 352c-24 24-56 8-72-16s0-56 16-72 48-8 72 16 24 56-16 72z"/></g></svg>',
+        type: 'image/svg+xml',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -28,26 +37,30 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <header className="border-b bg-white">
-          <nav className="mx-auto flex max-w-4xl items-center gap-6 px-6 py-3">
-            <Link href="/" className="text-lg font-bold text-pink-600">
-              Custo Material
+      <body className="relative min-h-full flex flex-col text-rose-950">
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <header className="sticky top-0 z-20 border-b border-white/50 bg-white/70 backdrop-blur-xl">
+          <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8">
+            <Link href="/" className="flex items-center gap-3 shrink-0">
+              <span
+                className="grid h-9 w-9 place-items-center rounded-full bg-rose-100 text-rose-600"
+                aria-hidden="true"
+              >
+                <ion-icon name="flower-outline" style={{ fontSize: 20 }}></ion-icon>
+              </span>
+              <span className="font-serif text-2xl font-semibold tracking-tight text-rose-950">
+                Custo Material
+              </span>
             </Link>
-            <div className="flex gap-4 text-sm">
-              <Link href="/materiais" className="text-gray-600 hover:text-pink-600">
-                Materiais
-              </Link>
-              <Link href="/flores" className="text-gray-600 hover:text-pink-600">
-                Flores
-              </Link>
-              <Link href="/buques" className="text-gray-600 hover:text-pink-600">
-                Buquês
-              </Link>
-            </div>
+            <span className="hidden text-sm font-medium text-rose-800/80 sm:inline">
+              Gestão de Floricultura
+            </span>
           </nav>
         </header>
-        <main className="flex-1">{children}</main>
+        <main className="relative z-10 flex-1">{children}</main>
+        <footer className="relative z-10 border-t border-white/40 py-4 text-center text-xs font-medium text-rose-900/60 backdrop-blur-xl">
+          Feito com amor para minha florista 🌸
+        </footer>
       </body>
     </html>
   );
