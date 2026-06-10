@@ -9,7 +9,7 @@ export default function MateriaisPage() {
   return (
     <section className="mx-auto w-full max-w-3xl px-4 py-6 sm:px-6 lg:px-8">
       <NavigationTabs />
-      <div className="mt-5 overflow-hidden rounded-[2rem] border border-white/70 bg-white/70 p-5 shadow-2xl shadow-rose-200/60 backdrop-blur-2xl sm:p-7">
+      <div className="mt-5 overflow-hidden rounded-[2rem] border border-rose-200/70 bg-rose-50/85 p-5 shadow-2xl shadow-rose-200/50 backdrop-blur-2xl sm:p-7">
         <div className="mb-6">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-rose-500">
             Materiais

@@ -31,11 +31,11 @@ function DeleteButton({ id }: { id: string }) {
 
 export function MaterialList({ materiais }: { materiais: Material[] }) {
   return (
-    <div className="overflow-hidden rounded-[1.5rem] border border-rose-100 bg-white/70 shadow-sm">
+    <div className="overflow-hidden rounded-[1.5rem] border border-rose-200/70 bg-rose-50/85 shadow-sm">
       <div className="overflow-x-auto">
         <table className="min-w-full">
           <thead>
-            <tr className="border-b border-rose-100 bg-rose-50/70 text-left text-xs font-semibold uppercase tracking-[0.18em] text-rose-500">
+            <tr className="border-b border-rose-200/70 bg-rose-100/60 text-left text-xs font-semibold uppercase tracking-[0.18em] text-rose-600">
               <th className="px-4 py-3">Nome</th>
               <th className="px-4 py-3">Unidade</th>
               <th className="px-4 py-3">Custo (R$)</th>
@@ -43,7 +43,7 @@ export function MaterialList({ materiais }: { materiais: Material[] }) {
               <th className="px-4 py-3 text-right">A&ccedil;&otilde;es</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-rose-100">
+          <tbody className="divide-y divide-rose-200/70">
             {materiais.map((material) => {
               const custoUnitario = getCustoUnitario(material)
               return (

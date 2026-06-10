@@ -19,14 +19,22 @@ const tabs = [
     href: '/flores',
     label: 'Flores',
     icon: (
-      <ion-icon name="rose-outline" style={{ fontSize: 14 }}></ion-icon>
+      <ion-icon
+        name="rose-outline"
+        style={{ fontSize: 14 }}
+        suppressHydrationWarning
+      ></ion-icon>
     ),
   },
   {
     href: '/buques',
     label: 'Buquês',
     icon: (
-      <ion-icon name="bag-check-outline" style={{ fontSize: 14 }}></ion-icon>
+      <ion-icon
+        name="bag-check-outline"
+        style={{ fontSize: 14 }}
+        suppressHydrationWarning
+      ></ion-icon>
     ),
   },
 ]
@@ -36,8 +44,8 @@ export function NavigationTabs() {
   if (pathname === '/') return null
 
   return (
-    <div className="rounded-[1.25rem] bg-white/50 p-1 shadow-lg shadow-rose-200/40 backdrop-blur-2xl">
-      <div className="grid grid-cols-3 gap-1 rounded-[1rem] bg-rose-100/50 p-0.5">
+    <div className="rounded-[1.25rem] bg-rose-50/85 p-1 shadow-lg shadow-rose-300/45 backdrop-blur-2xl">
+      <div className="grid grid-cols-3 gap-1 rounded-[1rem] bg-rose-100/65 p-0.5">
         {tabs.map((tab) => {
           const isActive = pathname.startsWith(tab.href)
           return (
@@ -46,8 +54,8 @@ export function NavigationTabs() {
               href={tab.href}
               className={`flex items-center justify-center gap-1.5 rounded-[0.85rem] px-3 py-2 text-xs font-semibold transition ${
                 isActive
-                  ? 'bg-rose-500 text-white shadow-sm shadow-rose-300/30'
-                  : 'text-rose-700/80 hover:bg-white/70 hover:text-rose-800'
+                  ? 'bg-rose-400 text-white shadow-sm shadow-rose-300/40'
+                  : 'text-rose-700/85 hover:bg-rose-50/75 hover:text-rose-800'
               }`}
             >
               {tab.icon}

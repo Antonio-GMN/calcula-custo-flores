@@ -35,7 +35,7 @@ export function CurrencyInput({ name, className }: {
 
   return (
     <div className="relative">
-      <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-500">
+      <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-rose-400">
         R$
       </span>
       <input type="hidden" ref={hiddenRef} name={name} />

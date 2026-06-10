@@ -13,47 +13,47 @@ export function BouquetForm({ materiais, flores }: { materiais: Material[]; flor
   )
 
   return (
-    <form action={formAction} className="space-y-4 rounded-lg border p-4">
-      <h2 className="text-lg font-semibold">Novo Buquê</h2>
+    <form action={formAction} className="space-y-4 rounded-[1.5rem] border border-rose-200/70 bg-rose-50/85 p-4 shadow-sm shadow-rose-200/40">
+      <h2 className="text-lg font-semibold text-rose-800">Novo Buquê</h2>
 
       <div>
-        <label htmlFor="nome" className="block text-sm font-medium">
+        <label htmlFor="nome" className="block text-sm font-medium text-rose-800/80">
           Nome do Buquê
         </label>
         <input
           id="nome"
           name="nome"
           required
-          className="mt-1 block w-full rounded-md border px-3 py-2 text-sm"
+          className="mt-1 block w-full rounded-full border border-rose-200 bg-white/85 px-4 py-2 text-sm text-black shadow-sm outline-none transition placeholder:text-rose-200 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
           placeholder="ex: Buquê Primavera"
         />
       </div>
 
       {materiais.length > 0 && (
         <div className="space-y-3">
-          <p className="text-sm font-medium">Materiais</p>
+          <p className="text-sm font-medium text-rose-800/80">Materiais</p>
           {materiais.map((material) => {
             const custoUnitario = getCustoUnitario(material)
             return (
               <div
                 key={material.id}
-                className="flex items-center gap-4 rounded-md bg-gray-50 p-3"
+                className="flex items-center gap-4 rounded-full bg-rose-100/60 p-3"
               >
                 <div className="flex-1">
-                  <p className="text-sm font-medium">{material.nome}</p>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-sm font-medium text-rose-900/85">{material.nome}</p>
+                    <p className="text-xs text-rose-700/70">
                     {formatUnidade(material)} &middot; R$ {custoUnitario.toFixed(2)} cada
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <label className="text-sm text-gray-600">{getUnidadeLabel(material)}:</label>
+                  <label className="text-sm text-rose-700/80">{getUnidadeLabel(material)}:</label>
                   <input
                     name={`qtd_mat_${material.id}`}
                     type="text"
                     inputMode="decimal"
                     defaultValue="0"
                     onFocus={(e) => e.target.select()}
-                    className="w-20 rounded-md border px-2 py-1 text-sm"
+                    className="w-20 rounded-full border border-rose-200 bg-white/85 px-3 py-1.5 text-sm text-black shadow-sm outline-none transition placeholder:text-rose-200 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
                   />
                 </div>
               </div>
@@ -64,29 +64,29 @@ export function BouquetForm({ materiais, flores }: { materiais: Material[]; flor
 
       {flores.length > 0 && (
         <div className="space-y-3">
-          <p className="text-sm font-medium">Flores</p>
+          <p className="text-sm font-medium text-rose-800/80">Flores</p>
           {flores.map((flor) => {
             const custoUnitario = calcularCustoFlor(flor, materiais)
             return (
               <div
                 key={flor.id}
-                className="flex items-center gap-4 rounded-md bg-gray-50 p-3"
+                className="flex items-center gap-4 rounded-full bg-rose-100/60 p-3"
               >
                 <div className="flex-1">
-                  <p className="text-sm font-medium">{flor.nome}</p>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-sm font-medium text-rose-900/85">{flor.nome}</p>
+                    <p className="text-xs text-rose-700/70">
                     R$ {custoUnitario.toFixed(2)} cada
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <label className="text-sm text-gray-600">Qtd:</label>
+                  <label className="text-sm text-rose-700/80">Qtd:</label>
                   <input
                     name={`qtd_flo_${flor.id}`}
                     type="text"
                     inputMode="numeric"
                     defaultValue="0"
                     onFocus={(e) => e.target.select()}
-                    className="w-20 rounded-md border px-2 py-1 text-sm"
+                    className="w-20 rounded-full border border-rose-200 bg-white/85 px-3 py-1.5 text-sm text-black shadow-sm outline-none transition placeholder:text-rose-200 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
                   />
                 </div>
               </div>
@@ -96,19 +96,19 @@ export function BouquetForm({ materiais, flores }: { materiais: Material[]; flor
       )}
 
       {materiais.length === 0 && flores.length === 0 && (
-        <p className="text-sm text-amber-600">
+        <p className="text-sm text-rose-700">
           Cadastre materiais ou flores primeiro antes de criar um buquê.
         </p>
       )}
 
       {state?.error && (
-        <p className="text-sm text-red-600">{state.error}</p>
+        <p className="rounded-full bg-rose-50 px-4 py-2 text-sm font-medium text-rose-700">{state.error}</p>
       )}
 
       <button
         type="submit"
         disabled={pending || (materiais.length === 0 && flores.length === 0)}
-        className="rounded-md bg-pink-600 px-4 py-2 text-sm font-medium text-white hover:bg-pink-700 disabled:opacity-50"
+        className="rounded-full bg-rose-400 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-rose-300/40 transition hover:bg-rose-500 disabled:opacity-50 disabled:hover:bg-rose-400"
       >
         {pending ? 'Salvando...' : 'Criar Buquê'}
       </button>

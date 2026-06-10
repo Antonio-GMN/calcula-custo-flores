@@ -36,33 +36,33 @@ export function MaterialForm() {
     <form action={formAction} className="space-y-5">
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="nome" className="mb-2 block text-sm font-medium text-rose-900/75">
+          <label htmlFor="nome" className="mb-2 block text-sm font-medium text-rose-800/80">
             Nome do material
           </label>
           <input
             id="nome"
             name="nome"
             required
-            className="block h-12 w-full rounded-full border border-rose-100 bg-white/80 px-4 text-sm text-rose-950 shadow-sm outline-none transition placeholder:text-rose-300 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
+            className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 text-sm text-black shadow-sm outline-none transition placeholder:text-rose-200 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
             placeholder="ex: Fita de cetim"
           />
         </div>
 
         <div>
-          <label htmlFor="custoPorUnidade" className="mb-2 block text-sm font-medium text-rose-900/75">
+          <label htmlFor="custoPorUnidade" className="mb-2 block text-sm font-medium text-rose-800/80">
             {form.unidade === 'pacote' ? 'Custo por pacote (R$)' : form.unidade === 'metro' ? 'Custo total (R$)' : 'Custo unitário (R$)'}
           </label>
           <CurrencyInput
             key={form.resetKey}
             name="custoPorUnidade"
-            className="block h-12 w-full rounded-full border border-rose-100 bg-white/80 px-4 pl-9 text-sm text-rose-950 shadow-sm outline-none transition placeholder:text-rose-300 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
+            className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 pl-9 text-sm text-black shadow-sm outline-none transition placeholder:text-rose-200 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
           />
         </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="unidade" className="mb-2 block text-sm font-medium text-rose-900/75">
+          <label htmlFor="unidade" className="mb-2 block text-sm font-medium text-rose-800/80">
             Tipo de unidade
           </label>
           <select
@@ -71,7 +71,7 @@ export function MaterialForm() {
             required
             value={form.unidade}
             onChange={(e) => dispatch({ type: 'setUnidade', value: e.target.value })}
-            className="block h-12 w-full rounded-full border border-rose-100 bg-white/80 px-4 text-sm text-rose-950 shadow-sm outline-none transition focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
+            className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 text-sm text-black shadow-sm outline-none transition focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
           >
             <option value="">Selecione...</option>
             <option value="unidade">Unidade</option>
@@ -82,7 +82,7 @@ export function MaterialForm() {
 
         {form.unidade === 'pacote' && (
           <div>
-            <label htmlFor="unidadesPorPacote" className="mb-2 block text-sm font-medium text-rose-900/75">
+            <label htmlFor="unidadesPorPacote" className="mb-2 block text-sm font-medium text-rose-800/80">
               Unidades por pacote
             </label>
             <input
@@ -91,7 +91,7 @@ export function MaterialForm() {
               type="text"
               inputMode="numeric"
               required
-              className="block h-12 w-full rounded-full border border-rose-100 bg-white/80 px-4 text-sm text-rose-950 shadow-sm outline-none transition placeholder:text-rose-300 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
+              className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 text-sm text-black shadow-sm outline-none transition placeholder:text-rose-200 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
               placeholder="ex: 10"
             />
           </div>
@@ -99,7 +99,7 @@ export function MaterialForm() {
 
         {form.unidade === 'metro' && (
           <div>
-            <label htmlFor="metrosTotal" className="mb-2 block text-sm font-medium text-rose-900/75">
+            <label htmlFor="metrosTotal" className="mb-2 block text-sm font-medium text-rose-800/80">
               Metros no material
             </label>
             <input
@@ -108,7 +108,7 @@ export function MaterialForm() {
               type="text"
               inputMode="decimal"
               required
-              className="block h-12 w-full rounded-full border border-rose-100 bg-white/80 px-4 text-sm text-rose-950 shadow-sm outline-none transition placeholder:text-rose-300 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
+              className="block h-12 w-full rounded-full border border-rose-200 bg-rose-50/80 px-4 text-sm text-black shadow-sm outline-none transition placeholder:text-rose-200 focus:border-rose-300 focus:bg-white focus:ring-4 focus:ring-rose-100"
               placeholder="ex: 50"
             />
           </div>
@@ -116,7 +116,7 @@ export function MaterialForm() {
       </div>
 
       {state?.error && (
-        <p className="rounded-full bg-red-50 px-4 py-2 text-sm font-medium text-red-600">
+        <p className="rounded-full bg-rose-50 px-4 py-2 text-sm font-medium text-rose-700">
           {state.error}
         </p>
       )}
@@ -124,7 +124,7 @@ export function MaterialForm() {
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-rose-500 px-6 text-sm font-semibold text-white shadow-lg shadow-rose-300/45 transition hover:bg-rose-600 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-rose-500"
+        className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-rose-400 px-6 text-sm font-semibold text-white shadow-lg shadow-rose-300/45 transition hover:bg-rose-500 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-rose-400"
       >
         <span aria-hidden="true">+</span>
         {pending ? 'Salvando...' : 'Adicionar Material'}
