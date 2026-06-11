@@ -1,5 +1,6 @@
 'use client'
 
+import { useFormStatus } from 'react-dom'
 import { removeMaterial } from './actions'
 import type { Material } from '@/lib/types'
 import { getCustoUnitario, formatUnidade } from '@/lib/types'
@@ -19,13 +20,21 @@ function DeleteButton({ id }: { id: string }) {
   return (
     <form action={handleRemove}>
       <input type="hidden" name="id" value={id} />
-      <button
-        type="submit"
-        className="rounded-full border border-red-200 bg-white px-3 py-1.5 text-xs font-semibold text-red-600 transition hover:bg-red-50 hover:text-red-700"
-      >
-        Remover
-      </button>
+      <SubmitButton />
     </form>
+  )
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus()
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="rounded-full border border-red-200 bg-white px-3 py-1.5 text-xs font-semibold text-red-600 transition hover:bg-red-50 hover:text-red-700 disabled:cursor-not-allowed disabled:opacity-50"
+    >
+      {pending ? 'Removendo...' : 'Remover'}
+    </button>
   )
 }
 
