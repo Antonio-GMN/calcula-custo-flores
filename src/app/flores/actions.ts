@@ -12,7 +12,7 @@ export async function createFlor(prevState: ActionState, formData: FormData) {
     return { error: 'Dê um nome à flor.' }
   }
 
-  const materiais = getMateriais()
+  const materiais = await getMateriais()
 
   const itens: FlorItem[] = []
   for (const material of materiais) {
@@ -33,14 +33,14 @@ export async function createFlor(prevState: ActionState, formData: FormData) {
     createdAt: new Date().toISOString(),
   }
 
-  addFlor(flor)
+  await addFlor(flor)
   revalidatePath('/flores')
   return { success: true }
 }
 
 export async function removeFlor(prevState: ActionState, formData: FormData) {
   const id = formData.get('id') as string
-  deleteFlor(id)
+  await deleteFlor(id)
   revalidatePath('/flores')
   return { success: true }
 }

@@ -40,7 +40,7 @@ export async function createMaterial(prevState: ActionState, formData: FormData)
     metrosTotal,
   }
 
-  addMaterial(material)
+  await addMaterial(material)
   revalidatePath('/materiais')
   return { success: true }
 }
@@ -71,14 +71,14 @@ export async function editMaterial(prevState: ActionState, formData: FormData) {
     }
   }
 
-  updateMaterial(id, { nome, unidade, custoPorUnidade, unidadesPorPacote, metrosTotal })
+  await updateMaterial(id, { nome, unidade, custoPorUnidade, unidadesPorPacote, metrosTotal })
   revalidatePath('/materiais')
   return { success: true }
 }
 
 export async function removeMaterial(prevState: ActionState, formData: FormData) {
   const id = formData.get('id') as string
-  deleteMaterial(id)
+  await deleteMaterial(id)
   revalidatePath('/materiais')
   return { success: true }
 }

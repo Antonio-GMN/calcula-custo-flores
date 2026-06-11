@@ -12,8 +12,10 @@ export async function createBouquet(prevState: ActionState, formData: FormData) 
     return { error: 'Dê um nome ao buquê.' }
   }
 
-  const materiais = getMateriais()
-  const flores = getFlores()
+  const [materiais, flores] = await Promise.all([
+    getMateriais(),
+    getFlores(),
+  ])
 
   const itens: BouquetItem[] = []
 
@@ -42,14 +44,14 @@ export async function createBouquet(prevState: ActionState, formData: FormData) 
     createdAt: new Date().toISOString(),
   }
 
-  addBuque(bouquet)
+  await addBuque(bouquet)
   revalidatePath('/buques')
   return { success: true }
 }
 
 export async function removeBouquet(prevState: ActionState, formData: FormData) {
   const id = formData.get('id') as string
-  deleteBuque(id)
+  await deleteBuque(id)
   revalidatePath('/buques')
   return { success: true }
 }

@@ -1,10 +1,12 @@
+import { connection } from 'next/server'
 import { getMateriais } from '@/lib/store'
 import { MaterialForm } from './material-form'
 import { MaterialList } from './material-list'
 import { NavigationTabs } from '@/components/navigation-tabs'
 
-export default function MateriaisPage() {
-  const materiais = getMateriais()
+export default async function MateriaisPage() {
+  await connection()
+  const materiais = await getMateriais()
 
   return (
     <section className="mx-auto w-full max-w-3xl px-4 py-6 sm:px-6 lg:px-8">

@@ -1,12 +1,16 @@
+import { connection } from 'next/server'
 import { getMateriais, getBuques, getFlores } from '@/lib/store'
 import { BouquetForm } from './bouquet-form'
 import { BouquetList } from './bouquet-list'
 import { NavigationTabs } from '@/components/navigation-tabs'
 
-export default function BuquesPage() {
-  const materiais = getMateriais()
-  const flores = getFlores()
-  const bouquets = getBuques()
+export default async function BuquesPage() {
+  await connection()
+  const [materiais, flores, bouquets] = await Promise.all([
+    getMateriais(),
+    getFlores(),
+    getBuques(),
+  ])
 
   return (
     <section className="mx-auto w-full max-w-3xl px-4 py-6 sm:px-6 lg:px-8">
