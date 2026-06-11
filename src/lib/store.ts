@@ -37,6 +37,7 @@ async function writeBlobJSON<T>(key: string, data: T): Promise<void> {
   await put(key, JSON.stringify(data, null, 2), {
     contentType: 'application/json',
     access: 'public',
+    allowOverwrite: true,
   })
 }
 
